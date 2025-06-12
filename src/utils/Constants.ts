@@ -15,7 +15,7 @@ export const Colors = {
   primary: '#007AFF',
   background: '#fff',
   text: '#131313',
-  logoText: '#AB932B',
+  nexedgeColor: '#AB932B',
   theme: '#CF551F',
   secondary: '#E5EBF5',
   tertiary: '#3C75BE',

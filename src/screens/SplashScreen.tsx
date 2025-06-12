@@ -50,7 +50,7 @@ const SplashScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.welcome}>Welcome to</Text>
-      <Image source={require('../assets/images/nexedge.png')} style={styles.logo}/>
+      <Image source={require('../assets/images/nexedge.jpeg')} style={styles.logo}/>
       <Text style={styles.intro}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae</Text>
       <TouchableOpacity style={styles.getStarted} onPress={() => resetAndNavigate('SigninScreen')}>
         <Text style={{color: 'white', marginRight: 20}}>Get Started</Text>
