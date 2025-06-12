@@ -1,4 +1,4 @@
-import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import React, { useState } from 'react';
 import { Colors, screenHeight } from '../utils/Constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -29,12 +29,18 @@ const Footer = () => {
         <TouchableOpacity onPress={()=> {
             navigate('HomeScreen');
         }}>
-            <Icon name='home' size={40} color={route.name === 'HomeScreen' ? Colors.nexedgeColor : '#888888'}/>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Icon name='home' size={40} color={route.name === 'HomeScreen' ? Colors.nexedgeColor : '#888888'}/>
+                <Text style={{color: `${route.name === 'HomeScreen' ? Colors.nexedgeColor : '#888888'}`, }}>Home</Text>
+            </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {
             navigate('ProfileScreen');
         }}>
-            <Icon name='person-pin' size={40} color={route.name === 'ProfileScreen' ? Colors.nexedgeColor : '#888888'}/>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Icon name='person-pin' size={40} color={route.name === 'ProfileScreen' ? Colors.nexedgeColor : '#888888'}/>
+                <Text style={{color: `${route.name === 'ProfileScreen' ? Colors.nexedgeColor : '#888888'}`}}>Account</Text>
+            </View>
         </TouchableOpacity>
     </View>
   );
