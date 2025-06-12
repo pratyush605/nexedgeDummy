@@ -6,7 +6,6 @@ const SigninScreen = () => {
   return (
     <View>
       <Text>SigninScreen</Text>
-      <Footer/>
     </View>
   );
 };
