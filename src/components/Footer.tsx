@@ -1,8 +1,8 @@
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import { Colors, screenHeight } from '../utils/Constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { navigate, resetAndNavigate } from '../utils/NavigationUtils';
+import { navigate } from '../utils/NavigationUtils';
 import { useRoute } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
@@ -34,6 +34,14 @@ const Footer = () => {
                 <Text style={{color: `${route.name === 'HomeScreen' ? Colors.nexedgeColor : '#888888'}`, }}>Home</Text>
             </View>
         </TouchableOpacity>
+        <TouchableOpacity onPress={()=> {
+            navigate('PerformanceScreen');
+        }}>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Icon name='engineering' size={40} color={route.name === 'PerformanceScreen' ? Colors.nexedgeColor : '#888888'}/>
+                <Text style={{color: `${route.name === 'PerformanceScreen' ? Colors.nexedgeColor : '#888888'}`, }}>Performance</Text>
+            </View>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => {
             navigate('InvestmentReportScreen');
         }}>
@@ -46,7 +54,7 @@ const Footer = () => {
             navigate('ProfileScreen');
         }}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                <Icon name='person-pin' size={40} color={route.name === 'ProfileScreen' ? Colors.nexedgeColor : '#888888'}/>
+                <Icon name='account-circle' size={40} color={route.name === 'ProfileScreen' ? Colors.nexedgeColor : '#888888'}/>
                 <Text style={{color: `${route.name === 'ProfileScreen' ? Colors.nexedgeColor : '#888888'}`}}>Account</Text>
             </View>
         </TouchableOpacity>
