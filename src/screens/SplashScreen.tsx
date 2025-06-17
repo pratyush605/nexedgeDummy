@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
     welcome: {
       fontSize: screenWidth * 0.2 * 0.2,
-      fontWeight: 'bold'
+      fontWeight: 'bold',
     },
     getStarted: {
       position: 'absolute',
@@ -33,8 +33,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       flexDirection: 'row',
-      width: screenWidth * 0.35,
+      width: screenWidth * 0.45,
       height: screenHeight * 0.2 * 0.3,
+
     },
     circleWithArrow: {
       borderRadius: 50,
@@ -43,8 +44,9 @@ const styles = StyleSheet.create({
       backgroundColor: '#fff',
       opacity: 0.65,
       justifyContent: 'center',
-      alignItems: 'center'
-    }
+      alignItems: 'center',
+      padding: screenWidth * 0.05,
+    },
 });
 
 const SplashScreen = () => {
@@ -53,10 +55,10 @@ const SplashScreen = () => {
       <Text style={styles.welcome}>Welcome to</Text>
       <Image source={require('../assets/images/nexedge.jpeg')} style={styles.logo}/>
       <Text style={styles.intro}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui dicta minus molestiae</Text>
-      <TouchableOpacity style={styles.getStarted} onPress={() => resetAndNavigate('SigninScreen')}>
+      <TouchableOpacity style={styles.getStarted} onPress={() => resetAndNavigate('Login')}>
         <Text style={{color: 'white', marginRight: 20}}>Get Started</Text>
         <View style={styles.circleWithArrow}>
-          <Image source={require('../assets/images/arrow_forward.png')} style={{width: 40}}/>
+          <Image source={require('../assets/images/arrow_forward.png')} style={{width: 25}}/>
         </View>
       </TouchableOpacity>
       <Footer/>

@@ -21,3 +21,8 @@ export const Colors = {
   tertiary: '#3C75BE',
   secondary_light: '#F6F7F9',
 };
+
+export const BTABS = {
+  DASHBOARD: 'Dashboard',
+  PROFILE: 'Profile',
+};

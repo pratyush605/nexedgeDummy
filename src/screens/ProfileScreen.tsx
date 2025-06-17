@@ -1,9 +1,11 @@
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
-import Footer from '../components/Footer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { screenHeight, screenWidth } from '../utils/Constants';
-import { resetAndNavigate } from '../utils/NavigationUtils';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserDetails } from '../store/AuthSlice';
+import { removeUserSession } from '../config/storage';
+import { logoutUser } from '../store/AuthSlice';
 
 const styles = StyleSheet.create({
     profile: {
@@ -36,6 +38,14 @@ const styles = StyleSheet.create({
 });
 
 const ProfileScreen = () => {
+  const user = useSelector(getUserDetails);
+  console.log('user', user);
+  const dispatch = useDispatch();
+
+  const handleLogout = async() => {
+  await removeUserSession();
+  dispatch(logoutUser());
+};
   return (
     <View style={styles.profile}>
       <View style={{flexDirection: 'row', width: '100%', marginBottom: 20}}>
@@ -49,19 +59,18 @@ const ProfileScreen = () => {
           <View style={styles.image}>
             <Image source={require('../assets/images/pp.jpg')} style={styles.image}></Image>
           </View>
-          <Text style={{marginLeft: 30}}>Chandu Chacha</Text>
+          <Text style={{marginLeft: 30}}>{user?.name}</Text>
         </View>
         <Text style={{color: '#888888', marginBottom: 25}}>Email:
-          <Text style={{color: 'black'}}>     testing@gmail.com</Text>
+          <Text style={{color: 'black', }}>     {user?.email_id}</Text>
         </Text>
         <Text style={{color: '#888888'}}>Mobile:
           <Text style={{color: 'black'}}>     1234567890</Text>
         </Text>
       </View>
-      <TouchableOpacity style={styles.logout} onPress={()=> resetAndNavigate('SigninScreen')}>
+      <TouchableOpacity style={styles.logout} onPress={handleLogout}>
         <Text style={{color: 'white'}}>Logout</Text>
       </TouchableOpacity>
-      <Footer/>
     </View>
   );
 };
