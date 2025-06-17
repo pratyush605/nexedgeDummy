@@ -1,28 +1,34 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
 import SplashScreen from '../screens/SplashScreen';
-import SigninScreen from '../screens/SigninScreen';
-import { navigationRef } from '../utils/NavigationUtils';
-import HomeScreen from '../screens/HomeScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import InvestmentReportScreen from '../screens/InvestmentReportScreen';
+import LoginScreen from '../screens/LoginScreen';
+import MainContainer from './MainContainer';
+// Import your authenticated screens here
+// import HomeScreen from '../screens/HomeScreen';
+// import ProfileScreen from '../screens/ProfileScreen';
 
 const Stack = createNativeStackNavigator();
 
-const Navigation = () => {
+interface NavigationProps {
+  isLoggedIn: boolean;
+}
+
+const Navigation: React.FC<NavigationProps> = ({ isLoggedIn }) => {
   return (
-    <NavigationContainer ref={navigationRef}>
-        <Stack.Navigator initialRouteName='SplashScreen' screenOptions={{
-            headerShown: false,
-        }}>
-            <Stack.Screen name='SplashScreen' component={SplashScreen}/>
-            <Stack.Screen name='SigninScreen' component={SigninScreen}/>
-            <Stack.Screen name='HomeScreen' component={HomeScreen}/>
-            <Stack.Screen name='InvestmentReportScreen' component={InvestmentReportScreen}/>
-            <Stack.Screen name='ProfileScreen' component={ProfileScreen}/>
-        </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      {isLoggedIn ? (
+        // Authenticated screens
+        <>
+          <Stack.Screen name="MainContainer" component={MainContainer} />
+        </>
+      ) : (
+        // Unauthenticated screens
+        <>
+          {/* <Stack.Screen name="SplashScreen" component={SplashScreen} /> */}
+          <Stack.Screen name="Login" component={LoginScreen} />
+        </>
+      )}
+    </Stack.Navigator>
   );
 };
 
