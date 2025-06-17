@@ -7,6 +7,7 @@ import { navigationRef } from '../utils/NavigationUtils';
 import HomeScreen from '../screens/HomeScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import InvestmentReportScreen from '../screens/InvestmentReportScreen';
+import PerformanceScreen from '../screens/PerformanceScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ const Navigation = () => {
             <Stack.Screen name='SplashScreen' component={SplashScreen}/>
             <Stack.Screen name='SigninScreen' component={SigninScreen}/>
             <Stack.Screen name='HomeScreen' component={HomeScreen}/>
+            <Stack.Screen name='PerformanceScreen' component={PerformanceScreen}/>
             <Stack.Screen name='InvestmentReportScreen' component={InvestmentReportScreen}/>
             <Stack.Screen name='ProfileScreen' component={ProfileScreen}/>
         </Stack.Navigator>

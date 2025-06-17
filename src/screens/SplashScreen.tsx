@@ -2,6 +2,7 @@ import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { screenHeight, screenWidth } from '../utils/Constants';
 import { resetAndNavigate } from '../utils/NavigationUtils';
+import Footer from '../components/Footer';
 
 const styles = StyleSheet.create({
     container: {
@@ -58,6 +59,7 @@ const SplashScreen = () => {
           <Image source={require('../assets/images/arrow_forward.png')} style={{width: 40}}/>
         </View>
       </TouchableOpacity>
+      <Footer/>
     </View>
   );
 };

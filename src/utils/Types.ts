@@ -4,3 +4,13 @@ export interface reportLayout{
     width: number,
     height: number
 }
+
+export interface BarChartData {
+    label: string;
+    strategy: number;
+    benchmark: number;
+}
+
+export interface PerformanceBarChartProps {
+    data: BarChartData[];
+}
