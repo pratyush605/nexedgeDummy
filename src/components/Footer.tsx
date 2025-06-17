@@ -35,6 +35,14 @@ const Footer = () => {
             </View>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {
+            navigate('InvestmentReportScreen');
+        }}>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Icon name='article' size={40} color={route.name === 'InvestmentReportScreen' ? Colors.nexedgeColor : '#888888'}/>
+                <Text style={{color: `${route.name === 'InvestmentReportScreen' ? Colors.nexedgeColor : '#888888'}`}}>Reports</Text>
+            </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {
             navigate('ProfileScreen');
         }}>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
