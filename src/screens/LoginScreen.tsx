@@ -1,15 +1,15 @@
 
 import React, {useState} from 'react';
-import { View, ScrollView, StyleSheet, Dimensions, Alert } from 'react-native';
+import { View, ScrollView, StyleSheet, Dimensions, Alert, KeyboardAvoidingView, Platform } from 'react-native';
 import { Text, TextInput, Button, IconButton } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { Image } from 'react-native';
-import { Formik } from 'formik';
+import { Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import PasswordInputText from './PasswordInputText';
 import axiosInstance from '../utils/axiosInstance';
-import { AuthInfo } from './types';
+import { AuthInfo, loginType } from './types';
 import {useDispatch} from 'react-redux';
 import {saveAuthInfo} from '../store/AuthSlice';
 import {storeUserSession, retrieveUserSession} from '../config/storage';
@@ -46,7 +46,7 @@ export default function LoginScreen() {
     errors,
     touched,
     isValid,
-  }) => (
+  }: FormikProps<loginType>) => (
     <>
       <Text style={styles.label}>Email</Text>
       <TextInput
@@ -58,7 +58,7 @@ export default function LoginScreen() {
         onChangeText={handleChange('email')}
         onBlur={handleBlur('email')}
         value={values.email}
-        error={touched.email && errors.email}
+        error={!!(touched.email && errors.email)}
       />
       {touched.email && errors.email && (
         <Text style={styles.errorText}>{errors.email}</Text>
@@ -93,14 +93,14 @@ export default function LoginScreen() {
           (!isValid || loading) && styles.disabledButton,
         ]}
         disabled={!isValid || loading}
-        onPress={handleSubmit}
+        onPress={() => handleSubmit()}
       >
         {loading ? 'Signing In...' : 'Sign In'}
       </Button>
     </>
   );
 
-  const handleLogin = async (values) => {
+  const handleLogin = async (values: loginType) => {
     try {
       setLoading(true);
       console.log('email', values.email);
@@ -122,7 +122,7 @@ export default function LoginScreen() {
     } catch (error) {
       setLoading(false);
       console.log('error', error);
-      alert('Login failed');
+      Alert.alert('Login failed');
     } finally {
       setLoading(false);
     }
@@ -131,44 +131,49 @@ export default function LoginScreen() {
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <IconButton
-            icon="arrow-left"
-            iconColor="white"
-            size={24}
-            onPress={() => navigation.goBack()}
-          />
-          <Text style={styles.headerTitle}>Sign In</Text>
-        </View>
-      </View>
-
-      {/* Form overlapping header */}
-      <View style={styles.formWrapper}>
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <View style={styles.formContainer}>
-            <Text style={styles.welcome}>Welcome Back</Text>
-            <Text style={styles.subtext}>Lorem Ipsum dolor sit amet</Text>
-
-            <Formik
-              initialValues={initialValues}
-              validationSchema={validationSchema}
-              onSubmit={handleLogin}
-            >
-              {renderForm}
-            </Formik>
-
-            <View style={styles.footerRow}>
-              <Text style={styles.poweredBy}>Powered by</Text>
-              <Image
-                source={require('../assets/images/nexedge.jpeg')}
-                style={styles.logo}
-                resizeMode="contain"
-              />
-            </View>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'android' ? 'height' : 'padding'}
+        style={{flex: 1}}
+      >
+        <View style={styles.header}>
+          <View style={styles.headerContent}>
+            <IconButton
+              icon="arrow-left"
+              iconColor="white"
+              size={24}
+              onPress={() => navigation.goBack()}
+            />
+            <Text style={styles.headerTitle}>Sign In</Text>
           </View>
-        </ScrollView>
-      </View>
+        </View>
+
+        {/* Form overlapping header */}
+        <View style={styles.formWrapper}>
+          <ScrollView contentContainerStyle={styles.scrollContent}>
+            <View style={styles.formContainer}>
+              <Text style={styles.welcome}>Welcome Back</Text>
+              <Text style={styles.subtext}>Lorem Ipsum dolor sit amet</Text>
+
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={handleLogin}
+              >
+                {renderForm}
+              </Formik>
+
+              <View style={styles.footerRow}>
+                <Text style={styles.poweredBy}>Powered by</Text>
+                <Image
+                  source={require('../assets/images/nexedge.jpeg')}
+                  style={styles.logo}
+                  resizeMode="contain"
+                />
+              </View>
+            </View>
+          </ScrollView>
+        </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 }

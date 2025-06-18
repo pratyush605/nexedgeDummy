@@ -19,3 +19,8 @@ export type AuthInfo = {
   user: UserData;
   token: string;
 };
+
+export type loginType = {
+  email: string;
+  password: string;
+};
