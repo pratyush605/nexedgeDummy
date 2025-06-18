@@ -13,20 +13,20 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: '#fff',
-        borderRadius: 20,
+        borderRadius: screenWidth * 0.05,
         width: screenWidth * 0.8,
-        padding: 25,
-        marginTop: 25
+        padding: screenWidth * 0.05 * 0.8,
+        marginTop: screenHeight * 0.025
     },
     selectAccount: {
-        borderRadius: 25,
+        borderRadius: screenWidth * 0.06,
         backgroundColor: '#e0e0e0',
-        padding: 25,
+        padding: screenWidth * 0.05 * 0.8,
         boxShadow: '0 0 8px black'
     },
     circleWithArrow: {
         position: 'absolute',
-        right: 10,
+        right: screenWidth * 0.02,
         borderRadius: 50,
         width: screenWidth * 0.2 * 0.35,
         height: screenWidth * 0.2 * 0.35,
@@ -41,7 +41,17 @@ const styles = StyleSheet.create({
         height: screenHeight * 0.2 * 0.2,
         borderRadius: 50,
         boxShadow: '0 0 8px black',
-        marginLeft: 10
+        marginLeft: screenWidth * 0.02
+    },
+    title: {
+        flexDirection: 'row',
+        width: '100%',
+        marginBottom: screenHeight * 0.02,
+    },
+    divider: {
+        borderBottomColor: '#888888',
+        borderBottomWidth: StyleSheet.hairlineWidth,
+        marginVertical: screenHeight * 0.01,
     }
 });
 
@@ -70,20 +80,20 @@ const InvestmentReportScreen = () => {
 
     return (
         <View style={styles.investmentReport}>
-            <View style={{flexDirection: 'row', width: '100%', marginBottom: 20}}>
-                <Icon name='reorder' size={40} style={{paddingTop: 10, paddingLeft: 10}}/>
-                <Text style={{paddingTop: 15, marginLeft: 15}}>Investment Report</Text>
+            <View style={styles.title}>
+                <Icon name='reorder' size={screenWidth * 0.067} style={{paddingTop: screenWidth * 0.02, paddingLeft: screenWidth * 0.02}}/>
+                <Text style={{paddingTop: screenWidth * 0.025, marginLeft: screenWidth * 0.025, fontSize: screenWidth * 0.025}}>Investment Report</Text>
             </View>
             <View ref={consolidatedRef} style={styles.container}>
-                <View style={{flexDirection: 'row', width: '100%', marginBottom: 20}}>
-                    <Icon name='text-snippet' size={40} style={{paddingTop: 10}}/>
-                    <Text style={{paddingTop: 15, marginLeft: 15}}>Get Consolidated Report</Text>
+                <View style={styles.title}>
+                    <Icon name='text-snippet' size={screenWidth * 0.067} style={{paddingTop: screenWidth * 0.015}}/>
+                    <Text style={{paddingTop: screenWidth * 0.025, marginLeft: screenWidth * 0.025, fontSize: screenWidth * 0.025}}>Get Consolidated Report</Text>
                 </View>
-                <View style={{ borderBottomColor: '#888888', borderBottomWidth: StyleSheet.hairlineWidth, marginTop: 10, marginBottom: 10 }}/>
+                <View style={styles.divider}/>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{marginBottom: 25}}>Select Account: </Text>
+                    <Text style={{marginBottom: screenWidth * 0.04}}>Select Account: </Text>
                     <View style={styles.circleWithArrow}>
-                        <Icon name='keyboard-arrow-right' size={40} color={'white'}/>
+                        <Icon name='keyboard-arrow-right' size={screenWidth * 0.067} color={'white'}/>
                     </View>
                 </View>
                 <Modal
@@ -98,7 +108,7 @@ const InvestmentReportScreen = () => {
                         <View style={{flex: 1}}>
                             <View style={[styles.selectAccount, {
                                 position: 'absolute',
-                                top: reportLayout.height + 10,
+                                top: reportLayout.height + screenHeight * 0.01,
                                 left: reportLayout.x,
                                 width: reportLayout.width
                             }]}>
@@ -109,7 +119,7 @@ const InvestmentReportScreen = () => {
                                             setAccount(option.value);
                                             setModalVisible(false);
                                         }}
-                                        style={{padding: 10}}
+                                        style={{padding: screenWidth * 0.03}}
                                     >
                                         <Text>{option.label}</Text>
                                     </TouchableOpacity>
@@ -120,42 +130,41 @@ const InvestmentReportScreen = () => {
                 </Modal>
                 <Pressable
                     onPress={showModal}>
-                    <Text style={{color: '#888888'}}>{account===''?'Select':account}</Text>
+                    <Text style={{color: '#888888', fontSize: screenWidth * 0.025}}>{account===''?'Select':account}</Text>
                 </Pressable>
             </View>
             <View style={styles.container}>
-                <View style={{flexDirection: 'row', width: '100%', marginBottom: 20, alignItems: 'center'}}>
-                    <Icon name='list-alt' size={40}/>
-                    <Text style={{marginLeft: 15}}>Detailed Report</Text>
+                <View style={[styles.title, {alignItems: 'center'}]}>
+                    <Icon name='list-alt' size={screenWidth * 0.067}/>
+                    <Text style={{marginLeft: screenWidth * 0.025, fontSize: screenWidth * 0.025}}>Detailed Report</Text>
                 </View>
-                <Text style={{marginBottom: 20}}>Capital Gains Report</Text>
+                <Text style={{marginBottom: screenHeight * 0.02, fontSize: screenWidth * 0.025}}>Capital Gains Report</Text>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{marginBottom: 20}}>File Type: </Text>
-                    <View style={styles.filetype}><Text>PDF</Text></View>
+                    <Text style={{marginBottom: screenHeight * 0.02}}>File Type: </Text>
+                    <View style={styles.filetype}><Text style={{fontSize: screenWidth * 0.025}}>PDF</Text></View>
                 </View>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{marginBottom: 20}}>Select Financial Year: </Text>
-                    <View style={[styles.filetype, {width: 120}]}><Text>2025 - 26</Text></View>
+                    <Text style={{marginBottom: screenHeight * 0.02}}>Select Financial Year: </Text>
+                    <View style={[styles.filetype, {width: screenWidth * 0.2}]}><Text style={{fontSize: screenWidth * 0.025}}>2025 - 26</Text></View>
                     <View style={styles.circleWithArrow}>
-                        <Icon name='keyboard-arrow-right' size={40} color={'white'}/>
+                        <Icon name='keyboard-arrow-right' size={screenWidth * 0.067} color={'white'}/>
                     </View>
                 </View>
-                <View style={{ borderBottomColor: '#888888', borderBottomWidth: StyleSheet.hairlineWidth, marginTop: 10, marginBottom: 10 }}/>
+                <View style={styles.divider}/>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{marginBottom: 20}}>Transaction Report</Text>
-                    <View style={{ position: 'absolute', right: 10,}}>
-                        <Icon name='keyboard-arrow-right' size={40} color={'#888888'}/>
+                    <Text style={{marginBottom: screenHeight * 0.02}}>Transaction Report</Text>
+                    <View style={{ position: 'absolute', right: screenWidth * 0.02,}}>
+                        <Icon name='keyboard-arrow-right' size={screenWidth * 0.067} color={'#888888'}/>
                     </View>
                 </View>
-                <View style={{ borderBottomColor: '#888888', borderBottomWidth: StyleSheet.hairlineWidth, marginTop: 10, marginBottom: 10 }}/>
+                <View style={styles.divider}/>
                 <View style={{flexDirection: 'row'}}>
-                    <Text style={{marginBottom: 20}}>Dividend Report</Text>
-                    <View style={{ position: 'absolute', right: 10,}}>
-                        <Icon name='keyboard-arrow-right' size={40} color={'#888888'}/>
+                    <Text style={{marginBottom: screenHeight * 0.02}}>Dividend Report</Text>
+                    <View style={{ position: 'absolute', right: screenWidth * 0.02,}}>
+                        <Icon name='keyboard-arrow-right' size={screenWidth * 0.067} color={'#888888'}/>
                     </View>
                 </View>
             </View>
-            <Footer/>
         </View>
     );
 };

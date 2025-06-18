@@ -3,6 +3,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Dashboard from '../screens/HomeScreen';
 import Profile from '../screens/ProfileScreen';
+import Performance from '../screens/PerformanceScreen';
+import InvestmentReport from '../screens/InvestmentReportScreen';
 import { BTABS } from '../utils/Constants';
 
 const Tab = createBottomTabNavigator();
@@ -20,6 +22,10 @@ export default function MainContainer() {
             iconName = 'home';
           } else if (route.name === BTABS.PROFILE) {
             iconName = 'person';
+          } else if (route.name === BTABS.PERFORMANCE) {
+            iconName = 'engineering';
+          } else if (route.name === BTABS.REPORT) {
+            iconName = 'article'
           }
 
           return (
@@ -50,6 +56,16 @@ export default function MainContainer() {
         name={BTABS.DASHBOARD}
         component={Dashboard}
         options={{ tabBarLabel: 'Home', unmountOnBlur: true }}
+      />
+      <Tab.Screen
+        name={BTABS.PERFORMANCE}
+        component={Performance}
+        options={{ tabBarLabel: 'Performance', unmountOnBlur: true }}
+      />
+      <Tab.Screen
+        name={BTABS.REPORT}
+        component={InvestmentReport}
+        options={{ tabBarLabel: 'Reports', unmountOnBlur: true }}
       />
       <Tab.Screen
         name={BTABS.PROFILE}

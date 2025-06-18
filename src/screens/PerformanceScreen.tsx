@@ -71,7 +71,7 @@ const PerformanceScreen = () => {
 
   return (
     <View style={styles.performance}>
-        <ScrollView contentContainerStyle={{flexGrow: 1, paddingBottom: screenHeight * 0.2 * 0.35}}>
+        <ScrollView contentContainerStyle={{flexGrow: 1}}>
             <View style={styles.container}>
                 <View style={{flexDirection: 'row', width: '100%', marginBottom: 20}}>
                     <View style={styles.group}>
@@ -149,7 +149,6 @@ const PerformanceScreen = () => {
           <PerformanceBarChart data={chartData} />
         </View>
         </ScrollView>
-        <Footer/>
     </View>
   );
 };

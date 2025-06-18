@@ -25,4 +25,6 @@ export const Colors = {
 export const BTABS = {
   DASHBOARD: 'Dashboard',
   PROFILE: 'Profile',
+  PERFORMANCE: 'Performance',
+  REPORT: 'Report'
 };
