@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { BottomTabNavigationOptions, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Dashboard from '../screens/HomeScreen';
 import Profile from '../screens/ProfileScreen';
@@ -55,22 +55,22 @@ export default function MainContainer() {
       <Tab.Screen
         name={BTABS.DASHBOARD}
         component={Dashboard}
-        options={{ tabBarLabel: 'Home', unmountOnBlur: true }}
+        options={{ tabBarLabel: 'Home', unmountOnBlur: true } as BottomTabNavigationOptions}
       />
       <Tab.Screen
         name={BTABS.PERFORMANCE}
         component={Performance}
-        options={{ tabBarLabel: 'Performance', unmountOnBlur: true }}
+        options={{ tabBarLabel: 'Performance', unmountOnBlur: true } as BottomTabNavigationOptions}
       />
       <Tab.Screen
         name={BTABS.REPORT}
         component={InvestmentReport}
-        options={{ tabBarLabel: 'Reports', unmountOnBlur: true }}
+        options={{ tabBarLabel: 'Reports', unmountOnBlur: true } as BottomTabNavigationOptions}
       />
       <Tab.Screen
         name={BTABS.PROFILE}
         component={Profile}
-        options={{ tabBarLabel: 'Account', unmountOnBlur: true }}
+        options={{ tabBarLabel: 'Account', unmountOnBlur: true } as BottomTabNavigationOptions}
       />
     </Tab.Navigator>
   );
