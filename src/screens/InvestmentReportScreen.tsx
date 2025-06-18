@@ -82,12 +82,12 @@ const InvestmentReportScreen = () => {
         <View style={styles.investmentReport}>
             <View style={styles.title}>
                 <Icon name='reorder' size={screenWidth * 0.067} style={{paddingTop: screenWidth * 0.02, paddingLeft: screenWidth * 0.02}}/>
-                <Text style={{paddingTop: screenWidth * 0.025, marginLeft: screenWidth * 0.025, fontSize: screenWidth * 0.025}}>Investment Report</Text>
+                <Text style={{paddingTop: screenWidth * 0.025, marginLeft: screenWidth * 0.025}}>Investment Report</Text>
             </View>
             <View ref={consolidatedRef} style={styles.container}>
                 <View style={styles.title}>
                     <Icon name='text-snippet' size={screenWidth * 0.067} style={{paddingTop: screenWidth * 0.015}}/>
-                    <Text style={{paddingTop: screenWidth * 0.025, marginLeft: screenWidth * 0.025, fontSize: screenWidth * 0.025}}>Get Consolidated Report</Text>
+                    <Text style={{paddingTop: screenWidth * 0.025, marginLeft: screenWidth * 0.025}}>Get Consolidated Report</Text>
                 </View>
                 <View style={styles.divider}/>
                 <View style={{flexDirection: 'row'}}>
@@ -130,15 +130,15 @@ const InvestmentReportScreen = () => {
                 </Modal>
                 <Pressable
                     onPress={showModal}>
-                    <Text style={{color: '#888888', fontSize: screenWidth * 0.025}}>{account===''?'Select':account}</Text>
+                    <Text style={{color: '#888888'}}>{account===''?'Select':account}</Text>
                 </Pressable>
             </View>
             <View style={styles.container}>
                 <View style={[styles.title, {alignItems: 'center'}]}>
                     <Icon name='list-alt' size={screenWidth * 0.067}/>
-                    <Text style={{marginLeft: screenWidth * 0.025, fontSize: screenWidth * 0.025}}>Detailed Report</Text>
+                    <Text style={{marginLeft: screenWidth * 0.025}}>Detailed Report</Text>
                 </View>
-                <Text style={{marginBottom: screenHeight * 0.02, fontSize: screenWidth * 0.025}}>Capital Gains Report</Text>
+                <Text style={{marginBottom: screenHeight * 0.02}}>Capital Gains Report</Text>
                 <View style={{flexDirection: 'row'}}>
                     <Text style={{marginBottom: screenHeight * 0.02}}>File Type: </Text>
                     <View style={styles.filetype}><Text style={{fontSize: screenWidth * 0.025}}>PDF</Text></View>
