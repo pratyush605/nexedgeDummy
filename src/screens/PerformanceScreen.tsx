@@ -14,20 +14,20 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: '#fff',
-        borderRadius: 20,
+        borderRadius: screenWidth * 0.04,
         width: screenWidth * 0.8,
-        padding: 20,
-        marginTop: 25
+        padding: screenWidth * 0.05,
+        marginTop: screenHeight * 0.025,
     },
     group: {
         flex: 1,
         backgroundColor: '#e0e0e0',
         borderRadius: 50,
-        width: 45,
-        height: 45,
+        width: screenWidth * 0.08,
+        height: screenWidth * 0.08,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 12,
+        marginRight: screenWidth * 0.02,
     },
     sectionHeader: {
         fontSize: 16,
@@ -111,18 +111,22 @@ const PerformanceScreen = () => {
                 <Text>Equities</Text>
                 <View style={{flexDirection: 'row'}}>
                     <View style={{flex: 1}}>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Inspection Date</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Cash Inflow</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Cash Outflow</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Cash On Hand</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Dividends</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Current Value</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Portfolio Abs. Gain</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>BM Abs. Gain</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>Portfolio XIRR</Text>
-                        <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>BM XIRR</Text>
+                        {[
+                            'Inspection Date',
+                            'Cash Inflow',
+                            'Cash Outflow',
+                            'Cash On Hand',
+                            'Dividends',
+                            'Current Value',
+                            'Portfolio Abs. Gain',
+                            'BM Abs. Gain',
+                            'Portfolio XIRR',
+                            'BM XIRR'
+                        ].map((value, index) => (
+                            <Text key={index} style={{color: '#888888', marginTop: 10, marginBottom: 10}}>{value}</Text>
+                        ))}
                     </View>
-                    <View style={{flex: 1, justifyContent: 'flex-end', alignItems: 'flex-end'}}>
+                    <View style={{flex: 1, alignItems: 'flex-end'}}>
                         {[
                             '17 June 2025',
                             '₹ 2,500.00',
@@ -132,7 +136,8 @@ const PerformanceScreen = () => {
                             '₹ 2,500.00',
                             '₹ 2,500.00 (10.2%)',
                             '₹ 2,500.00 (10.2%)',
-                            '10.2%', '10.2%'
+                            '10.2%',
+                            '10.2%'
                         ].map((value, index) => (
                             <Text key={index} style={{marginTop: 10, marginBottom: 10}}>{value}</Text>
                         ))}
