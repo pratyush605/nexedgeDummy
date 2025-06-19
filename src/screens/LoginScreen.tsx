@@ -9,7 +9,7 @@ import { Formik, FormikProps } from 'formik';
 import * as Yup from 'yup';
 import PasswordInputText from './PasswordInputText';
 import axiosInstance from '../utils/axiosInstance';
-import { AuthInfo, loginType } from './types';
+import { AuthInfo, loginType } from '../utils/Types';
 import {useDispatch} from 'react-redux';
 import {saveAuthInfo} from '../store/AuthSlice';
 import {storeUserSession, retrieveUserSession} from '../config/storage';

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#e0e0e0',
         borderRadius: 50,
         width: screenWidth * 0.08,
-        height: screenWidth * 0.08,
+        height: screenWidth * 0.085,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: screenWidth * 0.02,
@@ -109,37 +109,24 @@ const PerformanceScreen = () => {
             </View>
             <View style={[styles.container, {borderColor: 'blue', borderWidth: 1}]}>
                 <Text>Equities</Text>
-                <View style={{flexDirection: 'row'}}>
+                <View>
                     <View style={{flex: 1}}>
                         {[
-                            'Inspection Date',
-                            'Cash Inflow',
-                            'Cash Outflow',
-                            'Cash On Hand',
-                            'Dividends',
-                            'Current Value',
-                            'Portfolio Abs. Gain',
-                            'BM Abs. Gain',
-                            'Portfolio XIRR',
-                            'BM XIRR'
-                        ].map((value, index) => (
-                            <Text key={index} style={{color: '#888888', marginTop: 10, marginBottom: 10}}>{value}</Text>
-                        ))}
-                    </View>
-                    <View style={{flex: 1, alignItems: 'flex-end'}}>
-                        {[
-                            '17 June 2025',
-                            '₹ 2,500.00',
-                            '₹ 2,500.00',
-                            '₹ 2,500.00',
-                            '₹ 2,500.00',
-                            '₹ 2,500.00',
-                            '₹ 2,500.00 (10.2%)',
-                            '₹ 2,500.00 (10.2%)',
-                            '10.2%',
-                            '10.2%'
-                        ].map((value, index) => (
-                            <Text key={index} style={{marginTop: 10, marginBottom: 10}}>{value}</Text>
+                            ['Inspection Date', '17 June 2025', '#000'],
+                            ['Cash Inflow', '₹ 2,500.00', '#008000'],
+                            ['Cash Outflow', '₹ 2,500.00', '#008000'],
+                            ['Cash On Hand', '₹ 2,500.00', '#008000'],
+                            ['Dividends', '₹ 2,500.00', '#008000'],
+                            ['Current Value', '₹ 2,500.00', '#008000'],
+                            ['Portfolio Abs. Gain', '₹ 2,500.00 (10.2%)', '#000'],
+                            ['BM Abs. Gain', '₹ 2,500.00 (10.2%)', '#000'],
+                            ['Portfolio XIRR', '10.2%', '#000'],
+                            ['BM XIRR', '10.2%', '#000']
+                        ].map(([label, value, textColor], index) => (
+                            <View key={index} style={{flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+                                <Text style={{color: '#888888', marginTop: 10, marginBottom: 10}}>{label}</Text>
+                                <Text style={{marginTop: 10, marginBottom: 10, color: textColor}}>{value}</Text>
+                            </View>
                         ))}
                     </View>
                 </View>
